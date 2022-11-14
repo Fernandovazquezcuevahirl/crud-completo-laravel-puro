@@ -14,13 +14,13 @@ use App\Models\Category;
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $posts = Post::paginate(2);
+        $posts = Post::all()->where('estado','1');
         return view("post.index",compact('posts'));
     }
 
@@ -126,8 +126,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
-        return to_route("post.index")->with('status', "Post Eliminado");
-
+        // metodo normal para eliminar
+        // $post->delete();
+        // return to_route("post.index")->with('status', "Post Eliminado");
+        $post->estado = 0;
+        $post->save();
+        return to_route("post.index")->with('status', "Post Eliminado");        
     }
 }

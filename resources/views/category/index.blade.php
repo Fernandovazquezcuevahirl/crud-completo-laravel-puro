@@ -12,30 +12,22 @@
 
 @endif
 <br>
-    <a href="{{route("post.create")}}">CREAR</a>
+    <a href="{{route("category.create")}}">CREAR</a>
     <table>
         <thead>
         <tr>
             <th>TITULO</th>
-            <th>CATEGORIA </th>
-            <th>CONTENIDO </th>
-            <th>DESCRIPCION</th>
-            <th>POSTEADO</th>
             <th>ACCIONES</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ($posts as $p)
+            @foreach ($category as $c)
             <tr>
-                <td>{{$p->title}}</td>
-                <td>{{$p->category->title}} </td>
-                <td>{{$p->content}} </td>
-                <td>{{$p->description}} </td>
-                <td>{{$p->posted}}</td>
+                <td>{{$c->title}}</td>
                 <td>   
-                     <a href="{{route("post.edit",$p)}}">editar</a>
-                     <a href="{{route("post.show",$p)}}">ver</a>
-                     <form action="{{route("post.destroy",$p)}}" method="post">
+                     <a href="{{route("category.edit",$c)}}">editar</a>
+                     <a href="{{route("category.show",$c)}}">ver</a>
+                     <form action="{{route("category.destroy",$c)}}" method="post">
                         @method("DELETE")
                         @csrf
                         <button type="submit">Eliminar</button>
@@ -46,7 +38,7 @@
             @endforeach
         </tbody>
     </table>
-    {{-- {{ $posts->links()}} --}}
+    {{-- {{ $category->links()}} --}}
     
 </body>
 </html>

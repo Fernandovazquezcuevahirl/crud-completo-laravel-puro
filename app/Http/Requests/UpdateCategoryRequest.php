@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 
-class StorePostRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
 
     // protected function prepareForValidation()
@@ -19,7 +19,7 @@ class StorePostRequest extends FormRequest
     // {
     //     return [
             
-    //         "title" => "required|min:5|max:200|unique:posts",
+    //         "title" => "required|min:5|max:200",
     //         "slug" => "required|min:5|max:100",
     //         "content" => "required|min:10",
     //         "category_id" => "required|integer",
@@ -44,14 +44,11 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this->route("post")->id);
+
         return [
+            "title" => "required|min:5|max:200|unique:categories,title,".$this->route("category")->id ,
             
-            "title" => "required|min:5|max:200|unique:posts",
-            "slug" => "required|min:5|max:100",
-            "content" => "required|min:10",
-            "category_id" => "required|integer",
-            "description" => "required|min:10",
-            "posted" => "required",
         ];
     }
 }

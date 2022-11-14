@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title',500)->nullable();
             $table->string('slug',500)->nullable();
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }

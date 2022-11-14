@@ -21,7 +21,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('image')->nullable();
             $table->enum('posted',['yes','not'])->default('not');
-            $table->foreignId('category_id');
+            $table->integer('estado')->default(1);
+            $table->foreignId('category_id')->constrainde()->onDelete('RESTRICT')->onUpdate("RESTRICT");
             $table->timestamps();
         });
     }
