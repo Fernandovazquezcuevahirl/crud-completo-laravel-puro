@@ -32,7 +32,7 @@ class PostController extends Controller
     public function create()
     {
         // $categories = Category::get();
-        $categories = Category::pluck('id','title');
+        $categories = Category::all()->where('estado','1');
         $post = new Post();
         // esto es para solo pasar algunos datos de los arrays
 

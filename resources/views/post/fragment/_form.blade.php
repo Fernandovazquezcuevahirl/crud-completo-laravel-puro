@@ -10,8 +10,8 @@
 <br>
 <label for="">Categoria</label>
 <select name="category_id" >
-    @foreach ($categories as $title => $id)
-        <option {{ old("category_id",$post->category_id) == $id ? 'selected': "" }}  value="{{$id}}">{{ $title}}</option>
+    @foreach ($categories as $p)
+        <option {{ old("category_id",$post->category_id) == $p->id ? 'selected': "" }}  value="{{$p->id}}">{{ $p->title}}</option>
     @endforeach
 </select>
 
