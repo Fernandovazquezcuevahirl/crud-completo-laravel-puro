@@ -18,5 +18,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [UserController::class,'ObtenerDatos']);
 
-Route::resource('post', PostController::class);
-Route::resource('category', CategoryController::class);
+Route::group(['prefix' => 'segmentos'], function(){
+    Route::resource('post', PostController::class);
+    Route::resource('category', CategoryController::class);
+});
